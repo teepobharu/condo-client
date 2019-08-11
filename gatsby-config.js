@@ -30,7 +30,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: process.env.DEPLOY_URL
+          ? "https://condocms.herokuapp.com"
+          : "http://localhost:1337",
         prodApiURL: `https://condocms.herokuapp.com`,
         contentTypes: [
           `condo`,
