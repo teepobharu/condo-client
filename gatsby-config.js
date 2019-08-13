@@ -1,3 +1,10 @@
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+console.log(`Using environment configs: ${activeEnv}`)
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `BBB Condo`,
@@ -33,7 +40,6 @@ module.exports = {
         apiURL: process.env.DEPLOY_URL
           ? "https://condocms.herokuapp.com"
           : "http://localhost:1337",
-        prodApiURL: `https://condocms.herokuapp.com`,
         contentTypes: [
           `condo`,
           `user`
